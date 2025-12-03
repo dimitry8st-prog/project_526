@@ -12,3 +12,15 @@ source venv/Scripts/activate
 
 ##Установка зависимостей
 устанавливает все пакеты из файла requirements.txt Позволяет запускать проект на удаленном компьютере
+<!-- bash
+pip install -r requirements.txt -->
+
+## Создание и применение миграций
+ bash
+ python manage.py makemigrations # создает файлы миграции на основе Django
+ python manage.py migrate # применяет миграции к базе данных
+
+## создание суперпользователя
+bash
+python manage.py createsuperuser # опционально
+## Что делает - Создает администратора для доступа к панели Djngo
