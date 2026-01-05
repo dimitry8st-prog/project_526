@@ -1,38 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Все посты</title>
-    <style>
-        h1 {
-            color: red;
-        }
-    </style>
-</head>
-<body>
-    <h1>Все посты</h1>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Все посты</title>
+    </head>
+    <body>
+        <h1>Все посты</h1>
 
-    <!-- {%comment%} 
-    Привет меня зовут
-    {%endcomment%} -->
-
-    {%if posts%}
-    
-        {%for post in posts%}
-        <div class="post=container" style="border: 1px solid black; margin-bottom: 10px; padding: 15px;">
-            <h2>Заголовок поста: {{post.title}}</h2>
-            <p>Текст поста: {{post.text}}</p>
-            <small>Дата создания поста: {{post.created_at}}</small> {#фильтр#}
-        </div>
-        {%endfor%}
-
+        <!-- {%comment%} 
+        Привет меня зовут
+        {%endcomment%} -->
+        {#Отображение постов#}
+        {%if posts%}
+            {%for post in posts%}
+                <div class="post=container" style="border: 1px solid black; margin-bottom: 10px; padding: 15px;">
+                    {% comment %} <h2>Заголовок поста: <a href="/posts/{{ post.id }}/">{{ post.title }}</a></h2> {% endcomment %}
+                    <h2>Заголовок поста: <a href="{%url 'post_detail' post.id%}">{{ post.title }}</a></h2>
+                    <p>Текст поста: {{ post.text }}</p>
+                    <small>Дата создания поста: {{ post.created_at }}</small> {#фильтр#}
+                </div>
+            {%endfor%}
         {%else%}
             <p>Постов еще нет. Загляните позже</p>
-
-    {%endif%}
-
-
-    
-</body>
+        {%endif%}
+    </body>
 </html>
